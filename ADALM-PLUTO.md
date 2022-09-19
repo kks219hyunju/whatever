@@ -11,11 +11,11 @@ This is setup tutorial for ADALM-PLUTO Software Define Radio and its operation o
 - [Operation of FM Radio](#Operation-of-FM-Radio)
 
 ## Prerequisite
-- MATLAB(!https://www.mathworks.com/products/matlab.html)
+- [MATLAB](https://www.mathworks.com/products/matlab.html)
   - Digital Signal Processing System Toolbox
   - Signal Processing Toolbox
   - Communications Toolbox Support Package for Analog Devices ADALM-Pluto Radio
-- ADALM-PLUTO Software Defined Radio(!https://www.analog.com/en/design-center/evaluation-hardware-and-software/evaluation-boards-kits/adalm-pluto.html)
+- [ADALM-PLUTO Software Defined Radio](https://www.analog.com/en/design-center/evaluation-hardware-and-software/evaluation-boards-kits/adalm-pluto.html)
 
 ## MATLAB
 
