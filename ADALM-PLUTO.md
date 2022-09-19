@@ -11,15 +11,17 @@ This is setup tutorial for ADALM-PLUTO Software Define Radio and its operation o
 - [Operation of FM Radio](#Operation-of-FM-Radio)
 
 ## Prerequisite
-- MATLAB
+- MATLAB(!https://www.mathworks.com/products/matlab.html)
   - Digital Signal Processing System Toolbox
   - Signal Processing Toolbox
   - Communications Toolbox Support Package for Analog Devices ADALM-Pluto Radio
-- ADALM-PLUTO Software Defined Radio
+- ADALM-PLUTO Software Defined Radio(!https://www.analog.com/en/design-center/evaluation-hardware-and-software/evaluation-boards-kits/adalm-pluto.html)
 
 ## MATLAB
 
-Configuration works with 2022 and later
+MATLAB Version 2017 or later for operation of the radio. (configuration of the radio is not possible versions before 2022) 
+
+MATLAB Verison 2022 or later for both operation of the radio and configuration.
 
 ## Installing Drivers
 Open the box, once you have opened the box there should be 5 items should be present
@@ -51,6 +53,8 @@ the computer and ADALM-PLUTO Radio.
 
 **When MATLAB direct you to install v0.31, only install v0.31 when you have outdated firmware. Cannot guarantee if PLUTO Radio and MATLAB will work outdated verisons of firmware**
 
+**MAKE SURE THAT RADIO DOES NOT LOSE POWER WHILE UPDATING THE FIRMWARE, ONCE RADIO LOSE POWER DURING FIRMWARE UPDATE WILL RESULT IN BRICKING YOUR RADIO**
+
 ## Operation of FM Radio
 
 Upon completion of installing ADALM-PLUTO Toolbox, there will be multiple examples of codes for this Radio.
@@ -64,7 +68,7 @@ After opening the file, check Radio is prepared to operate
  - PLUTO Radio is turned on
  - MATLAB has all required toolboxes installed as directed above
 
-Once the radio is prepared, run the following command to configure the radio for the machine. This command will configure the radio to connected to MATLAB and set the software to process the FM radio signals.
+Once the radio is prepared, run the following command to configure the radio for the machine. This command will configure the radio to connected to MATLAB and set the software to process the FM radio signals. The configuration of the radio only works with MATLAB version after 2022, make sure your MATLAB is upto date for this operation.
 
 ```configurePlutoRadio('AD9364','usb:0')```
 
