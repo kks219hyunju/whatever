@@ -1,12 +1,12 @@
 # ADALM-PLUTO
 
 ## Table of Contents
-- [Prerequisite](Prerequisite)
-- [MATLAB](MATLAB)
-- [Installing Drivers](Installing_Drivers)
-- [MATLAB toolbox installation](MATLAB_toolbox_installation)
-- [Installing Firmware](Installing_Firmware)
-- [Operation of FM Radio](Operation_of_FM_Radio)
+- [Prerequisite](#Prerequisite)
+- [MATLAB](#MATLAB)
+- [Installing Drivers](#Installing-Drivers)
+- [MATLAB toolbox installation](#MATLAB-toolbox-installation)
+- [Installing Firmware](#Installing-Firmware)
+- [Operation of FM Radio](#Operation-of-FM-Radio)
 
 ## Prerequisite
 - MATLAB
