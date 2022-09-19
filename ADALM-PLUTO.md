@@ -1,5 +1,7 @@
 # ADALM-PLUTO
 
+This is setup tutorial for ADALM-PLUTO Software Define Radio and its operation on MATLAB.
+
 ## Table of Contents
 - [Prerequisite](#Prerequisite)
 - [MATLAB](#MATLAB)
@@ -17,7 +19,7 @@
 
 ## MATLAB
 
-configuration works with 2022 and later
+Configuration works with 2022 and later
 
 ## Installing Drivers
 Open the box, once you have opened the box there should be 5 items should be present
