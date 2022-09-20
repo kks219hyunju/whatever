@@ -24,7 +24,7 @@ MATLAB Version 2017 or later for operation of the radio. (configuration of the r
 MATLAB Verison 2022 or later for both operation of the radio and configuration.
 
 ## Installing Drivers
-Open the box, once you have opened the box there should be 5 items should be present
+Open the box, once you have opened the box there should be 4 items should be present
   - 1 ADALM-PLUTO Software Defined Radio
   - 1 Pair of Antenna
   - 1 USB-A to USB-micro
