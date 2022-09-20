@@ -5,64 +5,52 @@ int main(int argc, char** argv)
 	char c = 'L';
 	int countH = 0;
 	int countT = 0;
+	int totalH = 0;
+	int totalT = 0;
 	int trash = 0;
-	int countB;
-	char res;
-	while(c != EOF)
+	char result;
+	int biggestCount=0;
+	int otrash;
+	while((c=getchar()) != EOF)
 	{
-		c =getchar();
 		if (c == 'H')
 		{
 			countH++;
-			res = longestrun(countH, countT);
+			countT = 0;
+			if(countH > totalH)
+			{
+				totalH = countH;
+			}
 		}
 		else if ( c == 'T')
 		{
 			countT++;
-			res = longestrun(countH, countT);
+			countH = 0;
+			if(countT > totalT)
+			{
+				totalT = countT;
+			}
+		}
+
+
+
+		if (totalH > totalT)
+		{
+			result = 'H';
+			biggestCount = totalH;
+		}
+		else if (totalT > totalH)
+		{
+			result = 'T';
+			biggestCount = totalT;
+		}
+		else if (totalT == totalH)
+		{
+			result = 'B';
+			biggestCount = totalT;
 		}
 	}
-	printf("Number of H:");
-	printf("%d\n", countH);
-	printf("Number of T:");
-	printf("%d\n", countT);
-	printf("Trash Values:");
-	printf("%d\n", trash);
-	printf("The longest run was by:");
-	printf("%c\n", res);
+	printf("longest run by %c, with consecutive count of %d\n", result, biggestCount);
 
 	return 0;
 }
-
-
-int longestrun (int num1, int num2)
-{
-	// num1 is countH
-	// num2 is countT
-
-	char result;
-
-	if (num1 > num2)
-	{
-		num2 = 0;
-		printf("H: %d\n",num1);
-		result = 'H';
-	}
-	else if(num1 < num2)
-	{
-		num1 = 0;
-		printf("T: %d\n",num2);
-		result = 'T';
-	}
-	else if(num1 == num2)
-	{
-		printf("xxxH: %d\n",num1);
-		printf("xxxT: %d\n",num2);
-		result = 'B';
-		num1 = 0;
-		num2 = 0;
-	}
-	return result;
-}
-
-
