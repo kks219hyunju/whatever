@@ -1,30 +1,30 @@
 #include <stdio.h> //call in library 
 
-int main(int argc, char** argv)
+int main(int argc, char** argv) //main function
 {
-	char c = 'L';
-	int countH = 0;
-	int countT = 0;
-	int totalH = 0;
-	int totalT = 0;
-	char result;
-	int biggestCount=0;
-	while((c=getchar()) != EOF)
+	char c = 'L'; // declare char c
+	int countH = 0; // declear int variable countH
+	int countT = 0; // delcear int variable countT
+	int totalH = 0; // declear int varialbe totalH
+	int totalT = 0; // declear int variable totalT
+	char result; // declear char varaibla result
+	int biggestCount=0; //declear int variable biggestCount
+	while((c=getchar()) != EOF) //while c is geting letters from piped file, and End of Letter
 	{
-		if (c == 'H')
+		if (c == 'H') //check if ltter is H
 		{
-			countH++;
-			countT = 0;
-			if(countH > totalH)
+			countH++; // if so, add one
+			countT = 0; // make sure count T is zero
+			if(countH > totalH) //if countH is bigger than previously saved totalH, overwrite it
 			{
 				totalH = countH;
 			}
 		}
-		else if ( c == 'T')
+		else if ( c == 'T') // check if letter is T
 		{
-			countT++;
-			countH = 0;
-			if(countT > totalT)
+			countT++; //if so , add one to countT
+			countH = 0; // make sure count H is zero
+			if(countT > totalT) // if countT is bigger than previously saved totalT, overwrite it
 			{
 				totalT = countT;
 			}
@@ -32,23 +32,24 @@ int main(int argc, char** argv)
 
 
 
-		if (totalH > totalT)
+		if (totalH > totalT) //check if totalH is bigger than totalT
 		{
-			result = 'H';
-			biggestCount = totalH;
+			result = 'H'; // if so, the winner is H
+			biggestCount = totalH; // thus biggest count is Heads
 		}
-		else if (totalT > totalH)
+		else if (totalT > totalH) //check if the totalT is bigger than totalH
 		{
-			result = 'T';
-			biggestCount = totalT;
+			result = 'T'; //if so, the winner is Tails
+			biggestCount = totalT; //thus biggest count is tails
 		}
-		else if (totalT == totalH)
+		else if (totalT == totalH) //check if both Tail counts and Head counts are the same
 		{
-			result = 'B';
-			biggestCount = totalT;
+			result = 'B'; //if they are both same counts, both are winner
+			biggestCount = totalT;// thus biggest count is both
 		}
 	}
 	printf("longest consecutive count of %d, with letter %c\n", biggestCount, result);
+	//return longest count for the count, and which letter had longest consecutive count
 
-	return 0;
+	return 0; //successful operation of the program.
 }
