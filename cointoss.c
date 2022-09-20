@@ -50,7 +50,7 @@ int main(int argc, char** argv)
 			biggestCount = totalT;
 		}
 	}
-	printf("longest run by %c, with consecutive count of %d\n", result, biggestCount);
+	printf("longest consecutive count of %d, with letter %c\n", biggestCount, result);
 
 	return 0;
 }
