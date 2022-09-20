@@ -1,4 +1,28 @@
-#include <stdio.h> //call in library 
+/*
+Gyungseok Go
+Operating Systems 0925 T, 1300 WF
+Homework #1
+19SEP2022
+
+Functionality
+
+The program is ran by piped to a file. This program will only see if the file contains letter H or T, to count heads or tails on coin flips
+to run this file simply pipe it as example below
+ex.
+
+cat filename.txt | ./main.out
+
+This will allows the program to read the text or other files to process its plain text of the file.
+
+Dependencies
+
+The following program is coded in C, and complied by gcc.
+to install dependencies in Linux environment install the following.
+
+gcc (apt install gcc)
+
+*/
+#include <stdio.h> //call in basic libraries to process the data.
 
 int main(int argc, char** argv) //main function
 {

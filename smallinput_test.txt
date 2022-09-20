@@ -1,0 +1,1 @@
+longest consecutive count of 7, with letter T
