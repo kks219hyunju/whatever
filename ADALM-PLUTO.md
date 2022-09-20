@@ -36,6 +36,9 @@ this tutorial is created on ```06 Apr 2022 12:22```.
 Follow the steps provided in the installation process to install the driver on Windows machine 32-bit / 64-bit. Once the driver is installed, plug in the ADALM-PLUTO
 to your Windows Machine.
 
+**You may skip this step entirely, however it is recommended that you install drivers if operating MATLAB toolbox causes an issue.**
+
+
 ## MATLAB toolbox installation
 
 The ADALM-PLUTO needs two toolbox to work on MATLAB, ```Digital Signal Processing System Toolbox``` and ```Signal Processing Toolbox```.
