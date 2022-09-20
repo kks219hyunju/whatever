@@ -7,10 +7,8 @@ int main(int argc, char** argv)
 	int countT = 0;
 	int totalH = 0;
 	int totalT = 0;
-	int trash = 0;
 	char result;
 	int biggestCount=0;
-	int otrash;
 	while((c=getchar()) != EOF)
 	{
 		if (c == 'H')
