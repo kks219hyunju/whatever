@@ -3,9 +3,11 @@
 Print files backwards!
 
 ## Table of Contents
-[Dependencies](Dependencies)
-[Program Objective](Program-Objective)
-[Program Operation](Program-Operation)
+[Dependencies](!Dependencies)
+
+[Program Objective](!Program-Objective)
+
+[Program Operation](!Program-Operation)
 
 ## Dependencies
 ```stdio.h```, basic I/O operation of C
