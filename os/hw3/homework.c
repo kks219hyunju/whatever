@@ -20,63 +20,57 @@ before outputing next reserved line.
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <ctype.h>
 
 int main(int argc, char *argv[]) //delcaring input arguments in main function
 {
-	char const* filename = argv[1]; // First argument for file, this is pointer
-	char* time = argv[2]; // delay time
-	ssize_t read; 
-	char* line = NULL; //point of the line is NULL as there cannot be no line in the beginning
-	size_t len = 0; // size is not defined until the file is called
-	int tims =0; // integer converted delay arugment will be stored here
 	int hflag = 0;
 	int rflag = 0;
-
-
-	int option;
-  	 // put ':' at the starting of the string so compiler can distinguish between '?' and ':'
-   	while((option = getopt(argc, argv, ":if:lrx")) != -1)
-	{
-			//get option from the getopt() method
-      		switch(option)
+	char *cvalue = NULL;
+	int index;
+	int c;
+	
+	opterr = 0;
+	
+	while((c= getopt(argc,argv,"hrc:")) != -1)
+		switch(c)
 		{
-         		case 'h':
-            		hflag = 1;
-			printf("Given Option: %c\n", option);
-            		break;
-         		case 'r':
-			rflag = 1;
-            		printf("Given File: %s\n", optarg);
-            		break;
-      		}
-   	}
-   	for(; optind < argc; optind++)
+			case 'r':
+				rflag = 1;
+				break;
+			case 'h':
+				hflag = 1;
+				break;
+			case 'c':
+				cvalue = optarg;
+				break;
+			case '?':
+				if (optopt == 'c')
+					fprintf (stderr, "Option -%c requires an argument.\n", optopt);
+				else if (isprint (optopt))
+					fprintf(stderr, "Unknown option `-%c'.\n", optopt);
+				else
+					(stderr,"Unknown option character `\\x%x'.\n", optopt);
+				return 1;
+			default:
+				abort();
+		}
+	
+	
+	if(hflag == 1)
 	{
-	//when some extra arguments are passed
-      	printf("Given extra arguments: %s\n", argv[optind]);
-   	}
-
-
-
-
-	tims = atoi(time); // convert the string to integer for delay time
-	FILE *myfile = fopen(filename,"r"); // open the file by given by pointer argument
-	while ((read = getline(&line, &len, myfile)) != -1)
-	{
-		printf("%s",line); //print line as it reads
-
-	int p = strlen(line)-2; //remove empty lines between the reserved line, detect number of characters
-
-	for(p; p>=0; p--) //printing words in reverse happens here
-	{
-		// as the for loop counts down, it will print out each letter from the end of the line
-		printf("%c",line[p]); 
+		printf("");
 	}
-
-	printf("\n");
-	sleep(tims); //sleep for given time by the user
+	else if(rflag == 1)
+	{
+		//long lines of code
 	}
-
-	fclose(myfile); //close file
+	else
+	{
+		//another long lines of code	
+	}
+	
+	for (index = optind; index < argc; index++)
+    		printf ("Non-option argument %s\n", argv[index]);
 	return 0;
 }
