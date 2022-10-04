@@ -100,7 +100,7 @@ int main(int argc, char *argv[]) //delcaring input arguments in main function
 	}
 	else if(rflag == 1 && hflag == 0)
 	{
-		readback(cvalue)
+		readback(cvalue);
 	}
 	else
 	{
