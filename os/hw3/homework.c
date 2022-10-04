@@ -61,24 +61,18 @@ int main(int argc, char *argv[]) //delcaring input arguments in main function
 	{
 		printf("ERROR! PICK ONE ARGUMENT");
 	}
-	else if(hflag == 1 && rflag = 0)
+	else if(hflag == 1 && rflag == 0)
 	{
-		printf(" -- arg1 name of the file -- arg2 delay of each line     
-		       The following program is to take first argument from 
-		       the user and read each line of the file given by the
-		       user and print out the line in reverse. The second 
-		       argument is the delay between printing of each line. 
-		       By using sleep function, the program is able to delay 
-		       the printing of each line before outputing next reserved line.")
+		printf("-- arg1 name of the file -- arg2 delay of each line     The following program is to take first argument from the user and read each line of the file given by the user and print out the line in reverse. The second argument is the delay between printing of each line. By using sleep function, the program is able to delay the printing of each line before outputing next reserved line.")
 	}
-	else if(rflag == 1 && hflag = 0)
+	else if(rflag == 1 && hflag == 0)
 	{
 		char const* filename = cvalue; // First argument for file, this is pointer
-		char* time = .9; // delay time
+		char* time = 0; // delay time
 		ssize_t read; 
 		char* line = NULL; //point of the line is NULL as there cannot be no line in the beginning
 		size_t len = 0; // size is not defined until the file is called
-		int tims =0; // integer converted delay arugment will be stored here
+		int tims = 1; // integer converted delay arugment will be stored here
 
 		tims = atoi(time); // convert the string to integer for delay time
 		FILE *myfile = fopen(filename,"r"); // open the file by given by pointer argument
