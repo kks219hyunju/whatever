@@ -96,7 +96,7 @@ int main(int argc, char *argv[]) //delcaring input arguments in main function
 	}
 	else
 	{
-		printf("FAILED!")	
+		printf("FAILED!");	
 	}
 	
 	for (index = optind; index < argc; index++)
