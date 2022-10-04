@@ -25,7 +25,7 @@ before outputing next reserved line.
 int readback(char* fileCall)
 {
 	char const* filename = fileCall; // First argument for file, this is pointer
-	char* time = 1 // delay time
+	char* time = 1; // delay time
 	ssize_t read; 
 	char* line = NULL; //point of the line is NULL as there cannot be no line in the beginning
 	size_t len = 0; // size is not defined until the file is called
