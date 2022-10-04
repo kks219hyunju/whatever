@@ -3,8 +3,9 @@
 // Mr. Ethan Gold
 // Homework #3
 /*
--- arg1 "name of the file"
--- arg2 "delay of each line"
+-h is help document
+-r is to read the file in reverse like hw2
+-c is needed for the file document
 
 The following program is to take first argument from the user
 and read each line of the file given by the user and
@@ -67,15 +68,19 @@ int main(int argc, char *argv[]) //delcaring input arguments in main function
 		switch(c)
 		{
 			case 'r':
+				// check for r argument
 				rflag = 1;
 				break;
 			case 'h':
+				// check for h argument
 				hflag = 1;
 				break;
 			case 'c':
+				// check for c argument for input file
 				cvalue = optarg;
 				break;
 			case '?':
+				// if there is no c input file, then request one
 				if (optopt == 'c')
 					fprintf (stderr, "Option -%c requires an argument.\n", optopt);
 				else if (isprint (optopt))
@@ -90,11 +95,12 @@ int main(int argc, char *argv[]) //delcaring input arguments in main function
 	
 	if(hflag == 1 && rflag == 1)
 	{
-		printf("ERROR! PICK ONE ARGUMENT\n");
+		printf("ERROR! PICK ONE ARGUMENT\n"); // if both help and readback is called give an error
 	}
 	else if(hflag == 1 && rflag == 0)
 	{
 		printf("-- arg1 name of the file -- arg2 delay of each line     The following program is to take first argument from the user and read each line of the file given by the user and print out the line in reverse. The second argument is the delay between printing of each line. By using sleep function, the program is able to delay the printing of each line before outputing next reserved line. \n");
+		// help functoin
 	}
 	else if(rflag == 1 && hflag == 0 && cvalue == NULL)
 	{
@@ -102,14 +108,14 @@ int main(int argc, char *argv[]) //delcaring input arguments in main function
 	}
 	else if(rflag == 1 && hflag == 0)
 	{
-		readback(cvalue);
+		readback(cvalue); //call in readback function
 	}
 	else
 	{
-		printf("FAILED!\n");	
+		printf("FAILED!\n");	//if nothing is called, its failed
 	}
 	
 	for (index = optind; index < argc; index++)
-    		printf ("Non-option argument %s\n", argv[index]);
+    		printf ("Non-option argument %s\n", argv[index]); //if no argument is selected
 	return 0;
 }
