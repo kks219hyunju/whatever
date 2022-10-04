@@ -22,7 +22,7 @@ before outputing next reserved line.
 #include <string.h>
 #include <ctype.h>
 
-int readback(char fileCall)
+int readback(char* fileCall)
 {
 	char const* filename = fileCall; // First argument for file, this is pointer
 	char* time = 1 // delay time
