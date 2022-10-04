@@ -96,6 +96,10 @@ int main(int argc, char *argv[]) //delcaring input arguments in main function
 	{
 		printf("-- arg1 name of the file -- arg2 delay of each line     The following program is to take first argument from the user and read each line of the file given by the user and print out the line in reverse. The second argument is the delay between printing of each line. By using sleep function, the program is able to delay the printing of each line before outputing next reserved line. \n");
 	}
+	else if(rflag == 1 && hflag == 0 && cvlaue == NULL)
+	{
+		printf("INPUT A FILE TO BE READ \n");
+	}
 	else if(rflag == 1 && hflag == 0)
 	{
 		readback(cvalue);
