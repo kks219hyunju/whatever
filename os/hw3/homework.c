@@ -30,7 +30,6 @@ int readback(char* fileCall)
 	size_t len = 0; // size is not defined until the file is called
 	int tims =1; // integer converted delay arugment will be stored here
 
-	tims = atoi(time); // convert the string to integer for delay time
 	FILE *myfile = fopen(filename,"r"); // open the file by given by pointer argument
 	while ((read = getline(&line, &len, myfile)) != -1)
 	{
