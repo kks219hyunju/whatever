@@ -90,7 +90,7 @@ int main(int argc, char *argv[]) //delcaring input arguments in main function
 	
 	if(hflag == 1 && rflag == 1)
 	{
-		printf("ERROR! PICK ONE ARGUMENT");
+		printf("ERROR! PICK ONE ARGUMENT\n");
 	}
 	else if(hflag == 1 && rflag == 0)
 	{
