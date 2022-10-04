@@ -57,11 +57,15 @@ int main(int argc, char *argv[]) //delcaring input arguments in main function
 		}
 	
 	
-	if(hflag == 1)
+	if(hflag == 1 && rflag == 1)
 	{
-		printf("");
+		printf("ERROR! PICK ONE ARGUMENT");
 	}
-	else if(rflag == 1)
+	else if(hflag == 1 && rflag = 0)
+	{
+		//long lines of code
+	}
+	else if(rflag == 1 && hflag = 0)
 	{
 		//long lines of code
 	}
