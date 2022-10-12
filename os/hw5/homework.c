@@ -38,7 +38,7 @@ int readback(char* fileCall)
 
 	int p = strlen(line)-2; //remove empty lines between the reserved line, detect number of characters
 
-	for(p; p>=0; p--) //printing words in reverse happens here
+	for(; p>=0; p--) //printing words in reverse happens here
 	{
 		// as the for loop counts down, it will print out each letter from the end of the line
 		printf("%c",line[p]); 
@@ -52,14 +52,21 @@ int readback(char* fileCall)
 	return 0;
 }
 
-
-int takeFile(
-
-
-
-
-
-
+char takeFile(int argc, char *argv[], char *myfile)
+{
+	
+	FILE *myfile = NULL;
+	if(!myfile)
+	{
+		cvalue = stdin;
+	}
+	else
+	{
+		cvalue = fopen(myfile,"r");
+	}
+	return cvalue;
+	
+}
 
 
 
@@ -73,9 +80,11 @@ int main(int argc, char *argv[]) //delcaring input arguments in main function
 	int index;
 	int c;
 	
+	cvalue  = takeFile;
+	
 	opterr = 0;
 	
-	while((c= getopt(argc,argv,"hrc:")) != -1)
+	while((c= getopt(argc,argv,"hr:")) != -1)
 		switch(c)
 		{
 			case 'r':
@@ -85,10 +94,6 @@ int main(int argc, char *argv[]) //delcaring input arguments in main function
 			case 'h':
 				// check for h argument
 				hflag = 1;
-				break;
-			case 'c':
-				// check for c argument for input file
-				cvalue = optarg;
 				break;
 			case '?':
 				// if there is no c input file, then request one
