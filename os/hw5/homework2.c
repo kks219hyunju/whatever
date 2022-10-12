@@ -51,7 +51,7 @@ int readback(char* fileCall)
 }
 
 
-char takeFile(int argc, char *fargv[])
+void takeFile(int argc, char *fargv[])
 {
   int rflag = 0;
   int hflag = 0;
@@ -89,7 +89,7 @@ char takeFile(int argc, char *fargv[])
 			default:
 				abort();
 		}
-  return cvalue, rflag, hflag;
+  return 0;
 }
 
 
