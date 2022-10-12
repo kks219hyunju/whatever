@@ -1,7 +1,7 @@
 // 1c Gyungseok Go
 // Operating Systems
 // Mr. Ethan Gold
-// Homework #3
+// Homework #4
 /*
 -h is help document
 -r is to read the file in reverse like hw2
