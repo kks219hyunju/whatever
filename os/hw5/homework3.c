@@ -53,6 +53,34 @@ int readback(char* fileCall)
 	return 0;
 }
 
+int readbackstd(char* fileCall)
+{
+	ssize_t read; 
+	char* line = NULL; //point of the line is NULL as there cannot be no line in the beginning
+	size_t len = 0; // size is not defined until the file is called
+	int tims = 1; // integer converted delay arugment will be stored here
+
+	FILE *myfile = fopen(filename,"r"); // open the file by given by pointer argument
+	while ((read = getline(&line, &len, fileCall)) != -1)
+	{
+		printf("%s",line); //print line as it reads
+
+	int p = strlen(line)-2; //remove empty lines between the reserved line, detect number of characters
+
+	for(p; p>=0; p--) //printing words in reverse happens here
+	{
+		// as the for loop counts down, it will print out each letter from the end of the line
+		printf("%c",line[p]); 
+	}
+
+	printf("\n");
+	sleep(tims); //sleep for given time by the user
+	}
+
+	fclose(myfile); //close file
+	return 0;
+}
+
 
 
 int main(int argc, char *argv[]) //delcaring input arguments in main function
@@ -107,10 +135,13 @@ int main(int argc, char *argv[]) //delcaring input arguments in main function
 	else if(rflag == 1 && hflag == 0 && cvalue == NULL)
 	{
 		cvalue = stdin;
+		readbackstd(cvalue);
+		break;
 	}
 	else if(rflag == 1 && hflag == 0)
 	{
 		readback(cvalue); //call in readback function
+		break;
 	}
 	else
 	{
