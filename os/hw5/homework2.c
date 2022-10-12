@@ -105,35 +105,7 @@ int main(int argc, char *argv[]) //delcaring input arguments in main function
 	
 	opterr = 0;
   
-  [*cvalue,rflag,hflag] = takeFile;
-	
-	while((c= getopt(argc,argv,"hr:")) != -1)
-		switch(c)
-		{
-			case 'r':
-				// check for r argument
-				rflag = 1;
-				break;
-			case 'h':
-				// check for h argument
-				hflag = 1;
-				break;
-			case 'c':
-				// check for c argument for input file
-				cvalue = optarg;
-				break;
-			case '?':
-				// if there is no c input file, then request one
-				if (optopt == 'c')
-					fprintf (stderr, "Option -%c requires an argument.\n", optopt);
-				else if (isprint (optopt))
-					fprintf(stderr, "Unknown option `-%c'.\n", optopt);
-				else
-					(stderr,"Unknown option character `\\x%x'.\n", optopt);
-				return 1;
-			default:
-				abort();
-		}
+  	[*cvalue,rflag,hflag] = takeFile;
 	
 	
 	if(hflag == 1 && rflag == 1)
