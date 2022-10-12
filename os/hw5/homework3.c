@@ -23,22 +23,17 @@ before outputing next reserved line.
 #include <ctype.h>
 
 
-
-int readback(char* fileCall)
+int readback(char* fileCall, int tims)
 {
 	char const* filename = fileCall; // First argument for file, this is pointer
 	FILE *myfile = NULL;
 	ssize_t read; 
 	char* line = NULL; //point of the line is NULL as there cannot be no line in the beginning
 	size_t len = 0; // size is not defined until the file is called
-	int tims = 1; // integer converted delay arugment will be stored here
+	// int tims = 0; // integer converted delay arugment will be stored here
 
 	if(fileCall == "hello")
 	{
-		ssize_t read; 
-		char* line = NULL; //point of the line is NULL as there cannot be no line in the beginning
-		size_t len = 0; // size is not defined until the file is called
-		int tims = 1; // integer converted delay arugment will be stored here
 
 		while ((read = getline(&line, &len, stdin)) != -1)
 			{
@@ -46,7 +41,7 @@ int readback(char* fileCall)
 
 			int p = strlen(line)-2; //remove empty lines between the reserved line, detect number of characters
 
-			for(p; p>=0; p--) //printing words in reverse happens here
+			for(; p>=0; p--) //printing words in reverse happens here
 			{
 				// as the for loop counts down, it will print out each letter from the end of the line
 				printf("%c",line[p]); 
@@ -68,7 +63,7 @@ int readback(char* fileCall)
 
 			int p = strlen(line)-2; //remove empty lines between the reserved line, detect number of characters
 
-			for(p; p>=0; p--) //printing words in reverse happens here
+			for(; p>=0; p--) //printing words in reverse happens here
 			{
 				// as the for loop counts down, it will print out each letter from the end of the line
 				printf("%c",line[p]); 
@@ -92,16 +87,19 @@ int main(int argc, char *argv[]) //delcaring input arguments in main function
 	char *cvalue = NULL;
 	int index;
 	int c;
+	int time = 1;
 	
 	opterr = 0;
   
 	
-	while((c= getopt(argc,argv,"hrc:")) != -1)
+	while((c= getopt(argc,argv,"rhc:")) != -1)
 		switch(c)
 		{
 			case 'r':
 				// check for r argument
 				rflag = 1;
+				//time = atoi(argv[optind+1]);
+				time = atoi(argv[optind]);
 				break;
 			case 'h':
 				// check for h argument
@@ -111,7 +109,7 @@ int main(int argc, char *argv[]) //delcaring input arguments in main function
 				// check for c argument for input file
 				cvalue = optarg;
 				break;
-			case '?':
+			default:
 				// if there is no c input file, then request one
 				if (optopt == 'c')
 					fprintf (stderr, "Option -%c requires an argument.\n", optopt);
@@ -120,10 +118,7 @@ int main(int argc, char *argv[]) //delcaring input arguments in main function
 				else
 					(stderr,"Unknown option character `\\x%x'.\n", optopt);
 				return 1;
-			default:
-				abort();
 		}
-	
 	
 	if(hflag == 1 && rflag == 1)
 	{
@@ -131,16 +126,16 @@ int main(int argc, char *argv[]) //delcaring input arguments in main function
 	}
 	else if(hflag == 1 && rflag == 0)
 	{
-		printf("-- arg1 name of the file -- arg2 delay of each line     The following program is to take first argument from the user and read each line of the file given by the user and print out the line in reverse. The second argument is the delay between printing of each line. By using sleep function, the program is able to delay the printing of each line before outputing next reserved line. \n");
+		printf("USAGE: .main.out/ -c name of the file -r delay of each line or cat filename.txt | ./main.out -r -c");
 		// help functoin
 	}
 	else if(rflag == 1 && hflag == 0 && cvalue == NULL)
 	{
-		readback("hello");
+		readback("hello",time);
 	}
 	else if(rflag == 1 && hflag == 0)
 	{
-		readback(cvalue); //call in readback function
+		readback(cvalue,time); //call in readback function
 	}
 	else
 	{
