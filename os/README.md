@@ -1,12 +1,13 @@
-# Operating Systems Homework #3 Processes
+# Operating Systems Homework #4 Processes
 
-Print files backwards! With Argument!!!
+Print files backwards! With Argument!!! By piped process!!!!
 
 ## Table of Contents
 - [Dependencies](#dependencies)
 - [Program Objective](#program-objective)
 - [Program Operation](#program-operation)
 - [Arugument](#arugument)
+- [Fork](#fork)
 
 ## Dependencies
 ```stdio.h```, basic I/O operation of C
@@ -43,6 +44,9 @@ from the file inserted into the argument by the user. Once this process is compl
 it will close the inputted file via ```fclose``` and ```return 0``` to successfully
 close the progam.
 
+**The program is optimized to operate with having being piped into the ```cat``` command in Ubuntu**
+**The program's reading technique has changed to read the piped file, by the program checking between whather the program is being piped, such that if program sees no -c argument to read the file, it will check ```stdin``` if the file has been piped into the program. Main componet program is checking weather argument -c is passed with filename, if so it will operate as normal normal program with argument, if but it will operate by ```stdin``` file into file operation in the program**
+
 ## Arugument
 
 Arugment is being used to run the program. there are three arguments are implimented into this project,
@@ -50,7 +54,9 @@ this helps and allows the program to detect what user needs from the program and
 and run the program as user intended to be.
 
 ```
-./main.out [Argument ...]
+./main.out [-r -c -h Argument ...]
+
+cat Filename | ./main.out [-r -c -h Argument ...]
 ```
 
 
@@ -65,3 +71,9 @@ file provided by the user, if provided.
 
 The ``` -r, reverse``` argument will only allowed to be operated when ```-c, input file``` is given to reverse the
 file. if input file is not given the program will not run.
+
+## Fork
+
+The fork is program running in the process of the same program.
+
+The assignment we were given with executable file with fork in the program, thus the program calls in the same program within the same program, thus running fork within the fork in the program. and we were able to visualize such by ```strace``` the output of the program execution or ```strace```process child and parent process in ```ps awxsuf```. These two files are also turned in part of the dropbox named ```output``` and ```spoon```.
