@@ -76,4 +76,4 @@ file. if input file is not given the program will not run.
 
 The fork is program running in the process of the same program.
 
-The assignment we were given with executable file with fork in the program, thus the program calls in the same program within the same program, thus running fork within the fork in the program. and we were able to visualize such by ```strace``` the output of the program execution or ```strace```process child and parent process in ```ps awxsuf```. These two files are also turned in part of the dropbox named ```output``` and ```spoon```.
+The assignment we were given with executable file with fork in the program, thus the program calls in the same program within the same program, thus running fork within the fork in the program. and we were able to visualize such by ```strace``` the output of the program execution or ```strace```process child and parent process in ```ps awxsuf```. These two files are also turned in part of the dropbox named ```fork/outfile.txt``` and ```fork/spoon```.
