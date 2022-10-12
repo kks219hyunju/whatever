@@ -54,9 +54,9 @@ this helps and allows the program to detect what user needs from the program and
 and run the program as user intended to be.
 
 ```
-./main.out [-r -c -h Argument ...]
+./a.out [-r -c -h Argument ...]
 
-cat Filename | ./main.out [-r -c -h Argument ...]
+cat Filename | ./a.out [-r -c -h Argument ...]
 ```
 
 
