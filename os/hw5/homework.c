@@ -53,6 +53,7 @@ int readback(char* fileCall)
 }
 
 
+//while(!feof(stdin))
 
 int main(int argc, char *argv[]) //delcaring input arguments in main function
 {
@@ -64,7 +65,7 @@ int main(int argc, char *argv[]) //delcaring input arguments in main function
 	
 	opterr = 0;
 	
-	while((c= getopt(argc,argv,"hrc:")) != -1)
+	while((c= !feof(stdin))
 		switch(c)
 		{
 			case 'r':
