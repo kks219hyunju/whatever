@@ -53,6 +53,16 @@ int readback(char* fileCall)
 }
 
 
+int takeFile(
+
+
+
+
+
+
+
+
+
 //while(!feof(stdin))
 
 int main(int argc, char *argv[]) //delcaring input arguments in main function
