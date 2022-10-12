@@ -65,7 +65,7 @@ int main(int argc, char *argv[]) //delcaring input arguments in main function
 	
 	opterr = 0;
 	
-	while((c= !feof(stdin))
+	while((c= getopt(argc,argv,"hrc:")) != -1)
 		switch(c)
 		{
 			case 'r':
