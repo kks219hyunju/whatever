@@ -28,39 +28,59 @@ int readback(char* fileCall)
 {
 	char const* filename = fileCall; // First argument for file, this is pointer
 	FILE *myfile = NULL;
-
-	if(fileCall == "hello")
-	{
-		FILE *myfile = stdin;
-	}
-	else
-	{
-		FILE *myfile = fopen(filename,"r"); // open the file by given by pointer argument
-	}
-	
 	ssize_t read; 
 	char* line = NULL; //point of the line is NULL as there cannot be no line in the beginning
 	size_t len = 0; // size is not defined until the file is called
 	int tims = 1; // integer converted delay arugment will be stored here
 
-	while ((read = getline(&line, &len, myfile)) != -1)
+	if(fileCall == "hello")
 	{
-		printf("%s",line); //print line as it reads
+		ssize_t read; 
+		char* line = NULL; //point of the line is NULL as there cannot be no line in the beginning
+		size_t len = 0; // size is not defined until the file is called
+		int tims = 1; // integer converted delay arugment will be stored here
 
-	int p = strlen(line)-2; //remove empty lines between the reserved line, detect number of characters
+		while ((read = getline(&line, &len, stdin)) != -1)
+			{
+			printf("%s",line); //print line as it reads
 
-	for(p; p>=0; p--) //printing words in reverse happens here
+			int p = strlen(line)-2; //remove empty lines between the reserved line, detect number of characters
+
+			for(p; p>=0; p--) //printing words in reverse happens here
+			{
+				// as the for loop counts down, it will print out each letter from the end of the line
+				printf("%c",line[p]); 
+			}
+
+			printf("\n");
+			sleep(tims); //sleep for given time by the user
+		}
+
+		fclose(myfile); //close file
+		return 0;
+	}
+	else
 	{
-		// as the for loop counts down, it will print out each letter from the end of the line
-		printf("%c",line[p]); 
-	}
+		FILE *myfile = fopen(filename,"r"); // open the file by given by pointer argument
+		while ((read = getline(&line, &len, myfile)) != -1)
+			{
+			printf("%s",line); //print line as it reads
 
-	printf("\n");
-	sleep(tims); //sleep for given time by the user
-	}
+			int p = strlen(line)-2; //remove empty lines between the reserved line, detect number of characters
 
-	fclose(myfile); //close file
-	return 0;
+			for(p; p>=0; p--) //printing words in reverse happens here
+			{
+				// as the for loop counts down, it will print out each letter from the end of the line
+				printf("%c",line[p]); 
+			}
+
+			printf("\n");
+			sleep(tims); //sleep for given time by the user
+			}
+
+		fclose(myfile); //close file
+		return 0;
+	}
 }
 
 
