@@ -18,6 +18,8 @@ Print files backwards! With Argument!!! By piped process!!!!
 
 ```string.h```, use of string in C
 
+```ctype.h```, EOF and int variable acceptance
+
 ## Program Objective
 
 The code is depended on four library files, basic Input/Output, memory allocation,
