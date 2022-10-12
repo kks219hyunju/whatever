@@ -27,9 +27,11 @@ before outputing next reserved line.
 int readback(char* fileCall)
 {
 	char const* filename = fileCall; // First argument for file, this is pointer
-	if(!fileCall)
+	FILE *myfile = NULL;
+
+	if(fileCall == "hello")
 	{
-		fileCall = stdin;
+		FILE *myfile = stdin;
 	}
 	else
 	{
@@ -114,7 +116,7 @@ int main(int argc, char *argv[]) //delcaring input arguments in main function
 	}
 	else if(rflag == 1 && hflag == 0 && cvalue == NULL)
 	{
-		readback();
+		readback("hello");
 	}
 	else if(rflag == 1 && hflag == 0)
 	{
