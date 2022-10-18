@@ -100,8 +100,6 @@ int main(int argc, char *argv[]) //delcaring input arguments in main function
 	char *cvalue = NULL;
 	int index;
 	int c;
-	int returnStatus;
-	int childPid;
 	
 	
 	opterr = 0;
