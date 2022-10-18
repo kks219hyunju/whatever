@@ -77,6 +77,19 @@ int readback(char* fileCall)
 	}
 }
 
+void forkDothings(char theThing)
+{
+  if (fork() ==0)
+    {
+      printf("Hello from child\n");
+      readback(theThing);
+    }
+  else
+    {
+      printf("Hello from Parent\n");
+    }
+}
+
 
 
 int main(int argc, char *argv[]) //delcaring input arguments in main function
@@ -124,8 +137,7 @@ int main(int argc, char *argv[]) //delcaring input arguments in main function
 	        {
 		  do
 		    {
-		      fork();
-		      readback(argv[optind]);
+		      forkDothings(argv[optind]);
 		    }
 		  while(++optind < argc);
 		}

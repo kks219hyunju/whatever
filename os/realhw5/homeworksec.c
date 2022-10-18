@@ -1,7 +1,7 @@
 // 1c Gyungseok Go
 // Operating Systems
 // Mr. Ethan Gold
-// Homework #4
+// Homework #5
 /*
 -h is help document
 -r is to read the file in reverse like hw2
@@ -21,6 +21,7 @@ before outputing next reserved line.
 #include <unistd.h>
 #include <string.h>
 #include <ctype.h>
+#include <sys/wait.h>
 
 
 int readback(char* fileCall)
@@ -77,6 +78,19 @@ int readback(char* fileCall)
 	}
 }
 
+void forkDothings(char* theThing)
+{
+
+  if (fork() == 0)
+    {
+      readback(theThing);
+    }
+  else
+    {
+      
+    }
+}
+
 
 
 int main(int argc, char *argv[]) //delcaring input arguments in main function
@@ -86,6 +100,9 @@ int main(int argc, char *argv[]) //delcaring input arguments in main function
 	char *cvalue = NULL;
 	int index;
 	int c;
+	int returnStatus;
+	int childPid;
+	
 	
 	opterr = 0;
 
@@ -124,8 +141,7 @@ int main(int argc, char *argv[]) //delcaring input arguments in main function
 	        {
 		  do
 		    {
-		      fork();
-		      readback(argv[optind]);
+		      forkDothings(argv[optind]);
 		    }
 		  while(++optind < argc);
 		}
@@ -140,7 +156,8 @@ int main(int argc, char *argv[]) //delcaring input arguments in main function
 	}
 	for (index = optind; index < argc; index++)
     		printf ("Non-option argument %s\n", argv[index]); //if no argument is selected.
-	
+
+	while(wait(NULL)>0);
 	return 0;
 	
  }
