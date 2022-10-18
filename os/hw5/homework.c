@@ -23,20 +23,19 @@ before outputing next reserved line.
 #include <ctype.h>
 
 
-int readback(char* fileCall, int tims)
+int readback(char* fileCall)
 {
 	char const* filename = fileCall; // First argument for file, this is pointer
 	FILE *myfile = NULL;
 	ssize_t read; 
 	char* line = NULL; //point of the line is NULL as there cannot be no line in the beginning
 	size_t len = 0; // size is not defined until the file is called
-	// int tims = 0; // integer converted delay arugment will be stored here
+	int tims = 1; // integer converted delay arugment will be stored here
 
 	if(fileCall == "hello")
 	{
-
 		while ((read = getline(&line, &len, stdin)) != -1)
-			{
+		{
 			printf("%s",line); //print line as it reads
 
 			int p = strlen(line)-2; //remove empty lines between the reserved line, detect number of characters
@@ -58,7 +57,7 @@ int readback(char* fileCall, int tims)
 	{
 		FILE *myfile = fopen(filename,"r"); // open the file by given by pointer argument
 		while ((read = getline(&line, &len, myfile)) != -1)
-			{
+		{
 			printf("%s",line); //print line as it reads
 
 			int p = strlen(line)-2; //remove empty lines between the reserved line, detect number of characters
@@ -71,7 +70,7 @@ int readback(char* fileCall, int tims)
 
 			printf("\n");
 			sleep(tims); //sleep for given time by the user
-			}
+		}
 
 		fclose(myfile); //close file
 		return 0;
@@ -87,62 +86,61 @@ int main(int argc, char *argv[]) //delcaring input arguments in main function
 	char *cvalue = NULL;
 	int index;
 	int c;
-	int time = 1;
 	
 	opterr = 0;
-  
+
 	
-	while((c= getopt(argc,argv,"rhc:")) != -1)
+	while((c= getopt(argc,argv,"hrc:")) != -1)
+	{
 		switch(c)
 		{
 			case 'r':
 				// check for r argument
 				rflag = 1;
-				//time = atoi(argv[optind+1]);
-				time = atoi(argv[optind]);
 				break;
 			case 'h':
 				// check for h argument
 				hflag = 1;
 				break;
-			case 'c':
-				// check for c argument for input file
-				cvalue = optarg;
-				break;
 			default:
 				// if there is no c input file, then request one
-				if (optopt == 'c')
-					fprintf (stderr, "Option -%c requires an argument.\n", optopt);
-				else if (isprint (optopt))
+				if (c != 'h' || c != 'r')
 					fprintf(stderr, "Unknown option `-%c'.\n", optopt);
 				else
 					(stderr,"Unknown option character `\\x%x'.\n", optopt);
 				return 1;
 		}
 	
-	if(hflag == 1 && rflag == 1)
-	{
-		printf("ERROR! PICK ONE ARGUMENT\n"); // if both help and readback is called give an error
+		if(hflag == 1 && rflag == 1)
+		{
+		    printf("ERROR! PICK ONE ARGUMENT\n"); // if both help and readback is called give an error
+		}
+		else if(hflag == 1 && rflag == 0)
+		{
+		  printf("USAGE: .main.out/ -c name of the file -r delay of each line or cat filename.txt | ./main.out -r -c \n");
+		  // help functoin
+		}
+		else if(rflag == 1 && hflag == 0 && optind < argc)
+	        {
+		  do
+		    {
+		      readback(argv[optind]);
+		    }
+		      while(++optind < argc);
+		  
+		}
+		else if(rflag == 1 && hflag == 0 && cvalue == NULL)
+		{
+		  readback("hello");
+		}
+		else
+		{
+		  printf("FAILED!\n");	//if nothing is called, its failed
+		}
 	}
-	else if(hflag == 1 && rflag == 0)
-	{
-		printf("USAGE: .main.out/ -c name of the file -r delay of each line or cat filename.txt | ./main.out -r -c");
-		// help functoin
-	}
-	else if(rflag == 1 && hflag == 0 && cvalue == NULL)
-	{
-		readback("hello",time);
-	}
-	else if(rflag == 1 && hflag == 0)
-	{
-		readback(cvalue,time); //call in readback function
-	}
-	else
-	{
-		printf("FAILED!\n");	//if nothing is called, its failed
-	}
-	
 	for (index = optind; index < argc; index++)
-    		printf ("Non-option argument %s\n", argv[index]); //if no argument is selected
+    		printf ("Non-option argument %s\n", argv[index]); //if no argument is selected.
+	
 	return 0;
-}
+	
+ }
