@@ -1,6 +1,6 @@
-# Operating Systems Homework #4 Processes
+# Operating Systems Homework #5 Processes
 
-Print files backwards! With Argument!!! By piped process!!!!
+Print files backwards! With Argument!!! By piped process!!!! With ~(Intel Hyperthreading)~ Multithreading!!!!!
 
 ## Table of Contents
 - [Dependencies](#dependencies)
