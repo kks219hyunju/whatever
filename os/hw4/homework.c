@@ -29,7 +29,7 @@ int readback(char* fileCall)
 	ssize_t read; 
 	char* line = NULL; //point of the line is NULL as there cannot be no line in the beginning
 	size_t len = 0; // size is not defined until the file is called
-	int tims = 1; // integer converted delay arugment will be stored here
+	int tims = 0; // integer converted delay arugment will be stored here
 
 	FILE *myfile = fopen(filename,"r"); // open the file by given by pointer argument
 	while ((read = getline(&line, &len, myfile)) != -1)
