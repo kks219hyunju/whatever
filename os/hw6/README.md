@@ -71,6 +71,11 @@ http:[your ip addr]:[port number]
 
 ### Logging
 
+Logging done by creating a new text file in the desired directory.
+
+Logging will be done by giving desired directory, and it will log the time the program is ran,
+the file took to run the output to the HTTP protcol and its PID when the program is ran.
+
 ## Arugument
 
 Arugment is being used to run the program. there are three arguments are implimented into this project,
@@ -90,6 +95,7 @@ and run the program as user intended to be.
 -r    Read the input file and reverse the line
 -c    Give an input file to operate to reverse read the file
 -H    HTTP Header option
+-L    Enable Logging
 ```
 
 The ``` -h, help``` argument will only display the help for the program and WILL NOT run the program to reverse the
@@ -101,4 +107,5 @@ file. if input file is not given the program will not run.
 The ```-H, Header``` arugment will print HTTP Header to the printing. This enables the program to print HTTP header to
 the print, and able to cast the program to web browser.
 
-
+The ```-L, Logging``` arugment will log operation of the program, it will log time it ran, file it took as an argument
+and PID when the program is ran.
