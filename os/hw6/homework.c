@@ -55,17 +55,21 @@ int readback(char* fileCall)
 
 char writeLog(char * lv, char * cv)
 {
-	FILE * logf = NULL;
-	logf = fopen(lv,"a+");
-	if(!logf)
+	if(strchr(lv,'-') != NULL)
 	{
-		printf("INVALID DIRECTORY");
+		printf("INVALID DIRECTORY\n");
 		return -1;
 	}
+	FILE * logf = NULL; //create file variable logf
+	logf = fopen(lv,"a+");  // open file with name lv
+
 	time_t timestamp;
 	char timebuff[128];
-	time(&timestamp);
-	ctime_r(&timestamp,timebuff);
+
+	time(&timestamp);	//timestamp creation
+	ctime_r(&timestamp,timebuff);	//ctime is giving timestamp time
+	
+	//Writing text onto given timestamp name
 	timebuff[strcspn(timebuff, "\n")] = 0;
 	fprintf(logf, "%s", timebuff);
 	fprintf(logf, "\t");
@@ -91,7 +95,7 @@ int main(int argc, char *argv[]) //delcaring input arguments in main function
 	
 	opterr = 0;
 	
-	while((opt= getopt(argc,argv,":L:rHhc:")) != -1)
+	while((opt= getopt(argc,argv,"L:rHhc:")) != -1)
 		switch(opt)
 		{
 			case 'r':
