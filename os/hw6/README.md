@@ -31,7 +31,7 @@ arugment. Then strace the process by time delay option and save the ouput to a f
 ## Program Operation
 
 The program is run by user inputing an argument while running the program. The user
-should run the program by using code like following example. ```./a.out "filename" "delay time"```
+should run the program by using code like following example. ```./a.out -r -c "filename"```
 Once argument is inputed to the program, it will read the size of the file, and read
 the time delay in string, it will convert into integer by ```atoi``` function.
 
