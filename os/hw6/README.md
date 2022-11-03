@@ -56,7 +56,7 @@ output result via web browesr which supports HTTP protcol.
 The program can be run by using command as follows:
 
 ```
-./a.out -H -r -c [filename ...] –H | ncat –l [Port number]
+./a.out -H -r -c [filename] –H | ncat –l [Port number]
 ```
 **note that port number must be above 1024**
 
@@ -75,6 +75,20 @@ Logging done by creating a new text file in the desired directory.
 
 Logging will be done by giving desired directory, and it will log the time the program is ran,
 the file took to run the output to the HTTP protcol and its PID when the program is ran.
+
+The logging can be ran by using command as follows:
+```
+./a.out -r -c [filname] -L [log filename]
+```
+
+By running ```-L``` parameter, the program will output a log file of your desired log filename.
+
+The output of the log file looks something like this:
+```
+Weekday Month Day Time Year      filename.PID
+
+Wed Nov  2 21:13:47 2022	Moby_Duck.txt.6281
+```
 
 ## Arugument
 
