@@ -53,6 +53,30 @@ int readback(char* fileCall)
 }
 
 
+char writeLog(char * Lv)
+{
+	FILE * logf = NULL;
+	logf = fopen(Lv,"a+");
+	if(!logf)
+	{
+		printf("INVALID DIRECTORY");
+		return -1;
+	}
+	time_t timestamp;
+	char timebuff[128];
+	time(&timestamp);
+	ctime_r(&timestamp,timebuff);
+	timebuff[strcspn(timebuff, "\n")] = 0;
+	fprintf(logf, "%s", timebuff);
+	fprintf(logf, "\t");
+	fprintf(logf, "%s", Lv);
+	fprintf(logf,".");
+	fprintf(logf, "%d", getpid());
+	fprintf(logf, "\n");
+	fclose(logf);
+}
+
+
 
 int main(int argc, char *argv[]) //delcaring input arguments in main function
 {
@@ -101,6 +125,10 @@ int main(int argc, char *argv[]) //delcaring input arguments in main function
                 printf("Content-type: text/plain\n\n");
 		fflush(stdin);
         }
+	if(flagL == 1)
+	{
+		writeLog(lvalue);
+	}
 	if(hflag == 1 && rflag == 1)
         {
                 printf("ERROR! PICK ONE ARGUMENT\n"); // if both h>
@@ -125,5 +153,5 @@ int main(int argc, char *argv[]) //delcaring input arguments in main function
 
         for (index = optind; index < argc; index++)
                 printf ("Non-option argument %s\n", argv[index]); //if no argument is selected
-        return 0;
+	return 0;
 }
