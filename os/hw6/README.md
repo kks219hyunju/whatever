@@ -112,14 +112,14 @@ and run the program as user intended to be.
 -L    Enable Logging
 ```
 
-The ``` -h, help``` argument will only display the help for the program and WILL NOT run the program to reverse the
+``` -h, help``` argument will only display the help for the program and WILL NOT run the program to reverse the
 file provided by the user, if provided. 
 
-The ``` -r, reverse``` argument will only allowed to be operated when ```-c, input file``` is given to reverse the
+``` -r, reverse``` argument will only allowed to be operated when ```-c, input file``` is given to reverse the
 file. if input file is not given the program will not run.
 
-The ```-H, Header``` arugment will print HTTP Header to the printing. This enables the program to print HTTP header to
+```-H, Header``` arugment will print HTTP Header to the printing. This enables the program to print HTTP header to
 the print, and able to cast the program to web browser.
 
-The ```-L, Logging``` arugment will log operation of the program, it will log time it ran, file it took as an argument
+```-L, Logging``` arugment will log operation of the program, it will log time it ran, file it took as an argument
 and PID when the program is ran.
