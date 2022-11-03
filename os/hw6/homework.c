@@ -53,10 +53,10 @@ int readback(char* fileCall)
 }
 
 
-char writeLog(char * Lv)
+char writeLog(char * lv, char * cv)
 {
 	FILE * logf = NULL;
-	logf = fopen(Lv,"a+");
+	logf = fopen(lv,"a+");
 	if(!logf)
 	{
 		printf("INVALID DIRECTORY");
@@ -69,7 +69,7 @@ char writeLog(char * Lv)
 	timebuff[strcspn(timebuff, "\n")] = 0;
 	fprintf(logf, "%s", timebuff);
 	fprintf(logf, "\t");
-	fprintf(logf, "%s", Lv);
+	fprintf(logf, "%s", cv);
 	fprintf(logf,".");
 	fprintf(logf, "%d", getpid());
 	fprintf(logf, "\n");
@@ -91,7 +91,7 @@ int main(int argc, char *argv[]) //delcaring input arguments in main function
 	
 	opterr = 0;
 	
-	while((opt= getopt(argc,argv,"L:rHhc:")) != -1)
+	while((opt= getopt(argc,argv,":L:rHhc:")) != -1)
 		switch(opt)
 		{
 			case 'r':
@@ -127,7 +127,7 @@ int main(int argc, char *argv[]) //delcaring input arguments in main function
         }
 	if(flagL == 1)
 	{
-		writeLog(lvalue);
+		writeLog(lvalue,cvalue);
 	}
 	if(hflag == 1 && rflag == 1)
         {
