@@ -1,7 +1,7 @@
 // 1c Gyungseok Go
 // Operating Systems
 // Mr. Ethan Gold
-// Homework #3
+// Homework #6
 /*
 -h is help document
 -r is to read the file in reverse like hw2
@@ -139,7 +139,7 @@ int main(int argc, char *argv[]) //delcaring input arguments in main function
         }
         else if(hflag == 1 && rflag == 0)
         {
-		printf("USAGE: .main.out/ -c name of the file -r delay of each line or cat filename.txt | ./main.out -r -c \n");
+		printf("USAGE: ./a.out/ -c name of the file -r -L logfilename\n");
                 // help functoin
         }
         else if(rflag == 1 && hflag == 0 && cvalue == NULL)
