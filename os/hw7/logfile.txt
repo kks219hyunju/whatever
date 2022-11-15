@@ -1,0 +1,13 @@
+Mon Nov 14 21:10:10 2022	file1.txt.7219
+Mon Nov 14 21:10:27 2022	file1.txt.7227
+Mon Nov 14 21:10:37 2022	file1.txt.7228
+Mon Nov 14 21:10:48 2022	Moby_Duck.txt.7241
+Mon Nov 14 21:10:54 2022	Moby_Duck.txt.7242
+Mon Nov 14 21:11:00 2022	Moby_Duck.txt.7243
+Tue Nov 15 08:34:42 2022	file1.txt.4559
+Tue Nov 15 08:35:35 2022	file1.txt.4610
+Tue Nov 15 08:48:48 2022	file1.txt.4956
+Tue Nov 15 10:19:14 2022	file1.txt.9697
+Tue Nov 15 10:19:18 2022	file1.txt.9698
+Tue Nov 15 10:33:06 2022	file1.txt.10447
+Tue Nov 15 10:33:12 2022	file1.txt.10457
