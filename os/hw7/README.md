@@ -2,6 +2,9 @@
 
 Running executable on cgi-bin
 
+## Table of Contents
+- Operation[operation]
+
 ## Operation
 
 The executable program is all located under ```/usr/lib/cgi-bin```. Under this folder,there is ```a.out``` for the main executable, ```file.txt``` and ```Tempest.txt``` for output file.
@@ -29,6 +32,10 @@ This line of code is the one actually running the executable with variable ```-r
 env
 ```
 writes the enviroment variable to the webserver.
+
+## Working Screenshot
+
+![Screenshot_working.png](Screenshot_working.png)
 
 ## Changed Variables
 
