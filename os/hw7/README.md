@@ -3,7 +3,9 @@
 Running executable on cgi-bin
 
 ## Table of Contents
-- Operation[operation]
+- [Operation](#operation)
+- [Working Screenshot](#working-screenshot)
+- [Changed Variables](#changed-variables)
 
 ## Operation
 
