@@ -1,125 +1,46 @@
-# Operating Systems Homework #6 More Features
+# Operating Systems Homework #7 cgi-bin Programs
 
-Print files, listen on web domain, and logging
+Running executable on cgi-bin
 
-## Table of Contents
-- [Dependencies](#dependencies)
-- [Program Objective](#program-objective)
-- [Program Operation](#program-operation)
-  - [ncat Operation](#ncat-operation)
-  - [Logging](#logging)
-- [Arugument](#arugument)
+## Operation
 
-## Dependencies
-```stdio.h```, basic I/O operation of C
+The executable program is all located under ```/usr/lib/cgi-bin```. Under this folder,there is ```a.out``` for the main executable, ```file.txt``` and ```Tempest.txt``` for output file.
 
-```stdlib.h```, basic memory allocation, process control
-
-```unistd.h```, access to the POSIX operating system API
-
-```string.h```, use of string in C
-
-```time.h```, use of time in C
-
-## Program Objective
-
-The code is depended on four library files, basic Input/Output, memory allocation,
-POSIX system API, string libraries. The program's objective is to read filename from
-commandline arguments then print using ```STDOUT:printf()``` new line by reversing the file read from the
-arugment. Then strace the process by time delay option and save the ouput to a file.
-
-## Program Operation
-
-The program is run by user inputing an argument while running the program. The user
-should run the program by using code like following example. ```./a.out -r -c "filename"```
-Once argument is inputed to the program, it will read the size of the file, and read
-the time delay in string, it will convert into integer by ```atoi``` function.
-
-The program will open the file given to them, and use ```getline``` function to 
-receive the text line by line, and as it reads the line, it will also print the
-line backwards by using ```strlin(line)-2```, this allows print the current
-line in the text file to print in reverse. Once the reversed line is printed,
-program will ```sleep``` the amount of time given by the user in the second
-argument until do the next operation.
-
-The program will repeat this operation until there is no more line to be printed
-from the file inserted into the argument by the user. Once this process is completed,
-it will close the inputted file via ```fclose``` and ```return 0``` to successfully
-close the progam
-
-### ncat Operation
-
-ncat is a program that has networking utility able to read and write data across network (concatenate and redirect sockets). 
-Using this program, we are able to broadcast the program output result to HTTP protcol. This enables for others to view the
-output result via web browesr which supports HTTP protcol.
-
-The program can be run by using command as follows:
-
+The main shell script that runs the executable on to webserver is called ```tinycgi.sh```, this shell script contains the code that is pre-defined for shell to run the executable with certain variables assigned to it.
 ```
-./a.out -H -r -c [filename] –H | ncat –l [Port number]
-```
-**note that port number must be above 1024**
+#!/bin/bash
 
-After command is ran, then you can access the website by 
-```
-localhost:[port number]
-```
-if someone else is accessing it within the network
-```
-http:[your ip addr]:[port number]
+## Minimal cgi demo wrapper to show how the CGI environment works.
+## Header should be in child program, but this is a simple demo
+
+## dump the env as if it were a shell.
+## Human: Look for URL parameters in the outp
+
+./a.out -rL /var/log/osLogfile.log -H file.txt;
+
+env
 ```
 
-### Logging
-
-Logging done by creating a new text file in the desired directory.
-
-Logging will be done by giving desired directory, and it will log the time the program is ran,
-the file took to run the output to the HTTP protcol and its PID when the program is ran.
-
-The logging can be ran by using command as follows:
 ```
-./a.out -r -c [filname] -L [log filename]
+./a.out -rL /var/log/osLogfile.log -H file.txt;
 ```
-
-By running ```-L``` parameter, the program will output a log file of your desired log filename.
-
-The output of the log file looks something like this:
+This line of code is the one actually running the executable with variable ```-r[everse], -L[ogging], -H[TML]``` while calling ```file.txt``` to read the file onto the webserver.
 ```
-Weekday Month Day Time Year      filename.PID
+env
+```
+writes the enviroment variable to the webserver.
 
-Wed Nov  2 21:13:47 2022	Moby_Duck.txt.6281
+## Changed Variables
+
+The folder previlages were changed for logging to properly happen.
+
+All the logging will be saved under
+```
+/var/log/osLogfile.log
 ```
 
-## Arugument
-
-Arugment is being used to run the program. there are three arguments are implimented into this project,
-this helps and allows the program to detect what user needs from the program and able to parse an argument
-and run the program as user intended to be.
-
+In order for logging to correctly occur in root folder, change previlage command was used
 ```
-./a.out [Argument ...]
-```
-```
-./a.out -r -H -c [Argument file]
+sudo chown www-data log
 ```
 
-
-``` 
--h    Print help and instructions for the program
--r    Read the input file and reverse the line
--c    Give an input file to operate to reverse read the file
--H    HTTP Header option
--L    Enable Logging
-```
-
-``` -h, help``` argument will only display the help for the program and WILL NOT run the program to reverse the
-file provided by the user, if provided. 
-
-``` -r, reverse``` argument will only allowed to be operated when ```-c, input file``` is given to reverse the
-file. if input file is not given the program will not run.
-
-```-H, Header``` arugment will print HTTP Header to the printing. This enables the program to print HTTP header to
-the print, and able to cast the program to web browser.
-
-```-L, Logging``` arugment will log operation of the program, it will log time it ran, file it took as an argument
-and PID when the program is ran.
