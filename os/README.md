@@ -159,4 +159,10 @@ env
 ```
 
 In conclusion, Common Gateway Interface should be discarded as it is dangerous vulnerability that exists in the web service. While it is patched through ```bash```
-shell script operation, it still can easily be hacked through weakly secured program like ones we have programmed 
+shell script operation, it still can easily be hacked through weakly secured program like ones we have programmed. Issues of utilization of cgi-bin commonly consist of
+improper permission allocation, commandline injection technique, and all processes are directly fed from shell script, which impacts the operating system directly. 
+In alternative ways to improve security and protecting physical integrity of the server, processes that requested by the web broswer to the server must be forked from
+apache web service, which apache will have its own memory allocated for executables use the allocated memory, and use permission under apache permission domain.  This
+will ensure there is no improper permission allocation given to the shell script, commandline injection will not be possible as apache will have different suite of
+commandline interface than the server running the service, and last but not least, virtually the executables use memory allocated for the web server thus it will not
+directly impact the integrity of physical hardware.
