@@ -112,4 +112,49 @@ The server reads this address line like this:```./a.out -rL /var/log/osLogfile.l
 twice and will overwrite the first logging request and write the log file somewhere else, in this case, it will be the Documents folder in the home directory. This vulnerability gives the attacker ability to write and read files at root privilege. While reading capabilities are pretty unlimited at this level, writing is
 withint logging purpose and set script that was programmed in the program.
 
-Back in ```bash``` verison 2.6.0 and below, there was metasploit cgi-bin reverse shell script 
+
+In order to fix the vulnerability our program, argument variable must be altered so it does not interfere with new incoming ```QUERY_STRING```. Thus, when we
+run the program from the shell script, we run so that ```./a.out -rL /var/log/osLogfile.log -H $QUEARY_STRING$ ;``` we log first then callin the file we want to read.
+There are two things to fix here.
+ 1. When should log variable be called
+ 2. Giving fixed directory location so it does not interfere with root files
+
+When we look at url request to exploit the log variable to write on any location, it takes in the very last logging argument and the location that is given, so
+order to ensure that log is done properly, we must call it at the very end of the argument. Additionally, we must limit the directory accessed by the user by
+passing in a parent directory that we want for them to work or able to play around. After taking consideration of these two factors the correct solution for our
+program to operate in more secure manner in the shell script is by
+```
+./a.out ~/$QUEARY_STRING$ -rHL /var/log/osLogfile.log ;
+```
+
+All the arguments for the program is behind ```QUERY_STRING``` so if attacker attempt to replace the argument, they wont be able to do so. And when ```QUERY_STRING``` is
+called for specific file, by fixing to the home directory by adding ```~/```, we can eliminate attacker attempting to access the root files.
+
+
+Back in ```bash``` verison 2.6.0 and below, there was metasploit cgi-bin reverse shell exploit that was able to pass through any command via shell directly
+and have root privilage over the server. While the issue between cgi-bin metasploit reverse shell utilizes simliar technique as our cgi-bin vulnerability,
+metasploit is able to change the shell script. For example, given that we are using ```bash version 2.5.8```, if we pass in ```QUERY_STRING```
+
+```
+http://localhost/cgi-bin/tinycgi.sh=?whatever%;%;%; cat /etc/passwd 
+```
+
+This allows the attacker to use any command in shell, regardless of whatever program it is intended for use. So instead of changing the argument variables and
+exploiting the program we wrote, we are directly exploiting vulnerability existed in old bash shell. The way that this exploit works is by giving whatever input
+into the ```QUERY_STRING``` then commenting out the actual program portion of the script, then we are replacing new line of command after the shell script, thus
+for the operating system it would look something like this:
+```
+#!/bin/bash
+
+## Minimal cgi demo wrapper to show how the CGI environment works.
+## Header should be in child program, but this is a simple demo
+
+## dump the env as if it were a shell.
+## Human: Look for URL parameters in the output
+
+./a.out -rL /var/log/osLogfile.log -H whatever%;%;
+cat /etc/passwd;
+
+env
+```
+
