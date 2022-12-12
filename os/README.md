@@ -158,3 +158,5 @@ cat /etc/passwd;
 env
 ```
 
+In conclusion, Common Gateway Interface should be discarded as it is dangerous vulnerability that exists in the web service. While it is patched through ```bash```
+shell script operation, it still can easily be hacked through weakly secured program like ones we have programmed 
