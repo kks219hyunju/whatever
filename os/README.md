@@ -3,12 +3,12 @@
 Apache Webserver cgi-bin Vulnerability Assessment regards Our implemented Program
 
 Common Gate Interface (CGI) is a resource for accommodating web service to run a script or programs so instead of having to
-program separate programs through java-script and work on implementation of such system, and CGI eliminates the need of
-the such difficult process by injecting script directly into web service, we are able to run most any programs that exist
+program separate programs through java-script and work on implementation of such system, CGI eliminates the need of
+the such difficult process by injecting script directly from web service to shell script, we are able to run most any programs that exist
 within the web server host.
 
 There are a few things that we need to recognize in words that describe of use of cgi-bin.
-When it comes to executing programs through script there are a few enviroment components that the operating system may be
+When it comes to executing programs through script, there are a few enviroment components that the operating system may be
 exposed to vulnerability attacks or bugs that could cause the system to break in various ways.
 Naturally, the operating system carries many loopholes or vulnerabilities, some known by many people, and some that have
 not even discovered yet.
@@ -25,7 +25,7 @@ There are multiple ways that a server (hosting web service) can be breached
 
 Some of these limitations can be overlapped and can be explained together. In this article, Process, memory,
 CPU limitations will be explained together, as thus vulnerability of cgi-bin and similar script execution technique
-could have these similar occurrences for security breaches.
+could have similar symptoms for security breaches.
 
  1. Physical limitations
  2. Network limitations
@@ -41,13 +41,12 @@ web server, unless the program call is made by a million or trillion users becau
 when we complied to run in the server.
 
 The network limitations are commonly composed of Denial of Service Attacks that bug down the flow of traffic into the web server when these types of
-attacks occur in the web server there are two main goals that attackers usually try to accomplish. one, denial of service by sending millions of traffic
+attacks occurs there are two main goals that attackers usually try to accomplish. one, denial of service by sending millions of traffic
 through the network, which will cause clog the network line, and people who try to access the server will not be able to access the server. second, the attacker
 is attempting to create a buffer overflow, often attackers attempt buffer overflow to create within physical system exploit to access and modify within memory space.
 
 The exploit we are going to attempt on our system is part of operating systems and program vulnerabilities. In order to attempt this vulnerability we must know
 the characteristics of cgi-bin, and our program's loophole.
-
 
 The program is run by the user inputting an argument while running the program. The user
 should run the program by using code like the following example. ```./a.out -r -c "filename"```
@@ -69,8 +68,8 @@ There are various arguments input through this program.
 and program is ran command like this: ```./a.out -rL /var/log/osLogfile.log -H file.txt;```
 
 
-In the whole operation of our program, our program is able to read whatever is inputted into the program, whether they are in the parent directory
-or pointed through an absolute directory.
+In the whole operation of our program isto read whatever is inputted into the program, whether they are in the parent directory
+or pointed through an absolute directory path.
 
 
 The executable program is all located under ```/usr/lib/cgi-bin```. Under this folder, there is ```a.out``` for the main executable, ```file.txt``` and ```Tempest.txt``` for the output file.
@@ -93,7 +92,7 @@ env
 The script may seem normal but it has a fatal flaw. The executable program is programmed so it takes whatever directory data, it is looking for a file within
 the current directory, but the program nor the shell script does not stop the user to insert the absolute directory. Apache web server simply takes in the output of the
 program execution and displays it onto the web browser, and all execution is done within the operating system level, which means there is no differentiating between
-calling a root file vs user-created files.
+calling a root file vs user-managed files.
 
 For example, the attacker could easily read ```/etc/passwd``` file.
 
@@ -158,4 +157,4 @@ cat /etc/passwd;
 env
 ```
 
-In conclusion, Common Gateway Interface should be discarded as it is dangerous vulnerability that exists in the web service. While it is patched through ```bash``` shell script operation, it still can easily be hacked through weakly secured program like ones we have programmed. Issues of utilization of cgi-bin commonly consist of improper permission allocation, command line injection technique, and all processes are directly fed from shell script, which impacts the operating system directly. In alternative ways to improve security and protecting physical integrity of the server, processes that requested by the web browser to the server must be forked from Apache web service, which Apache will have its own memory allocated for executables use the allocated memory and use permission under Apache permission domain. This will ensure there is no improper permission allocation given to the shell script, command line injection will not be possible as Apache will have different suite of command line interface than the server running the service, and last but not least, virtually the executables use memory allocated for the web server thus it will not directly impact the integrity of physical hardware
+In conclusion, Common Gateway Interface should be discarded as it is dangerous vulnerability that exists in the web service. While it is patched through ```bash``` shell script operation, it still can easily be hacked through weakly secured program like ones we have programmed. Issues of utilization of cgi-bin commonly consist of improper permission allocation, command line injection technique, and all processes are directly fed from shell script, which impacts the operating system directly. In alternative ways to improve security and protecting physical integrity of the server, processes that requested by the web browser to the server must be forked from Apache web service, which Apache will have its own memory allocated for executables use the allocated memory and use permission under Apache permission domain. This will ensure there is no improper permission allocation given to the shell script, command line injection will not be possible as Apache will have different suite of command line interface than the server running the service, and last but not least, virtually the executables use memory allocated for the web server thus it will not directly impact the integrity of physical hardware.
